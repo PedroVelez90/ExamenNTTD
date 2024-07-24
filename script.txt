@@ -1,0 +1,51 @@
+--creacion base de datos
+CREATE DATABASE banco;
+
+--creacion de tablas 
+create table Personas
+( id INT AUTO_INCREMENT,
+  nombre VARCHAR(255) NOT NULL,
+  genero VARCHAR(20),
+  edad INT,
+  identificacion VARCHAR(13) NOT NULL UNIQUE,
+  direccion VARCHAR(255),
+  telefono  VARCHAR(20),
+  PRIMARY KEY (id)
+);
+
+create table Clientes
+(id  INT AUTO_INCREMENT,
+ clave       VARCHAR(20) NOT NULL,
+ estado      boolean,
+ persona_id  INT, 
+ PRIMARY KEY (id),
+ FOREIGN KEY (persona_id) REFERENCES Personas(id)
+);
+
+create table Cuentas
+(id   INT AUTO_INCREMENT,
+ numero_cuenta VARCHAR(50) NOT NULL,
+ tipo_cuenta   VARCHAR(50) NOT NULL,
+ saldo_inicial DOUBLE,
+ estado        boolean,
+ cliente_id    INT, 
+ PRIMARY KEY (id),
+ FOREIGN KEY (cliente_id) REFERENCES Clientes(id)
+);
+
+
+create table Movimientos
+(id    INT AUTO_INCREMENT,
+ fecha_movimiento DATETIME NOT NULL,
+ tipo_movimiento  VARCHAR(50) NOT NULL,
+ valor    DOUBLE,
+ saldo    DOUBLE,
+ cuenta_id    INT, 
+ PRIMARY KEY (id),
+ FOREIGN KEY (cuenta_id) REFERENCES Cuentas(id)
+);
+
+select * from Personas p 
+select * from Clientes c 
+select * from Cuentas
+select * from Movimientos m 
