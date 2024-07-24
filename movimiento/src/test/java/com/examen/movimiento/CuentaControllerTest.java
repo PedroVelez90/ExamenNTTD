@@ -38,7 +38,6 @@ public class CuentaControllerTest {
 
         CuentaDto cuentaNueva = new CuentaDto();
         ClienteDto cliente = new ClienteDto();
-        cliente.setId(1l);
         cuentaNueva.setCliente(cliente);
         cuentaNueva.setNumeroCuenta(12345l);
         cuentaNueva.setSaldoInicial(100.0);
